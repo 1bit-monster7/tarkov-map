@@ -4,6 +4,8 @@ import { useState } from 'react';
 export interface SettingProps {
   locationScale: boolean;
   onLocationScaleChange: (b: boolean) => void;
+  pinTheWindow:boolean;
+  onPinTheWindowChange: (b: boolean) => void;
 }
 let ipcRenderer: any; // 声明 ipcRenderer 变量
 
@@ -20,15 +22,14 @@ if (window.require) {
 }
 
 const Index = (props: SettingProps) => {
-  const { locationScale, onLocationScaleChange } = props;
-  const [fixedWindows, setFixedWindows] = useState(true);
+  const { locationScale, onLocationScaleChange,pinTheWindow,onPinTheWindowChange } = props;
   const handleToggleLocationScale = () => {
     onLocationScaleChange(!locationScale);
   };
 
   const handleSetFixedWindows = () => {
-    const newFixedWindows = !fixedWindows; // 计算更新后的值
-    setFixedWindows(newFixedWindows);
+    const newFixedWindows = !pinTheWindow; // 计算更新后的值
+    onPinTheWindowChange(newFixedWindows);
     ipcRenderer.invoke('toggle_always_on_top', newFixedWindows);
   };
 
@@ -48,10 +49,10 @@ const Index = (props: SettingProps) => {
 
         <button
           className="im-quicktools-modal-setting-button"
-          style={{ color: fixedWindows ? '#288828' : '#882828' }}
+          style={{ color: pinTheWindow ? '#288828' : '#882828' }}
           onClick={handleSetFixedWindows}
         >
-          固定窗口 ({fixedWindows ? '启用' : '禁用'})
+          固定窗口 ({pinTheWindow ? '启用' : '禁用'})
         </button>
       </div>
     </div>

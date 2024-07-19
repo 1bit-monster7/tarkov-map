@@ -43,10 +43,9 @@ function createWindow() {
         }
     });
 
-    ipcMain.handle('toggle_always_on_top', (event, shouldBeOnTop) => {
+    ipcMain.handle('toggle_always_on_top', (event, value) => {
         if (win) {
-            console.log(shouldBeOnTop,'shouldBeOnTop')
-            win.setAlwaysOnTop(shouldBeOnTop); // 设置窗口置顶状态
+            win.setAlwaysOnTop(value); // 设置窗口置顶状态
         }
     });
 }

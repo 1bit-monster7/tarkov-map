@@ -63,6 +63,11 @@ const Index = () => {
     defaultValue: true,
   });
 
+
+  const [pinTheWindow, setPinTheWindow] = useLocalStorageState<boolean>('im-pinTheWindow', {
+    defaultValue: true,
+  });
+
   const [strokeType, setStrokeType] = useState<InteractiveMap.StrokeType>('drag');
   const [strokeColor, setStrokeColor] = useLocalStorageState<string>('im-strokeColor', {
     defaultValue: '#9a8866',
@@ -75,6 +80,11 @@ const Index = () => {
   });
 
   const [quickSearchShow, setQuickSearchShow] = useState(false);
+
+
+  const handlePinTheWindowChange = (_b: boolean) => {
+    setPinTheWindow(_b);
+  };
 
   const handleCursorPositionChange = (_cursorPosition: InteractiveMap.Position2D) => {
     setCursorPosition(_cursorPosition);
@@ -264,6 +274,7 @@ const Index = () => {
                 strokeWidth={strokeWidth}
                 eraserWidth={eraserWidth}
                 locationScale={locationScale}
+                pinTheWindow={pinTheWindow}
                 resolution={resolution}
                 isMobile={isMobile}
                 setQuickSearchShow={setQuickSearchShow}
@@ -277,6 +288,7 @@ const Index = () => {
                 onStrokeWidthChange={handleStrokeWidthChange}
                 onEraserWidthChange={handleEraserWidthChange}
                 onLocationScaleChange={handleLocationScaleChange}
+                onPinTheWindowChange={handlePinTheWindowChange}
                 onMapInfoActive={handleMapInfoActive}
               />
               {resolution.width > 1280 && <Coordinate {...utils} position={cursorPosition} />}
