@@ -8,7 +8,7 @@ const useLocalImages = (url: string): [HTMLImageElement | undefined, Status] => 
 
   useEffect(() => {
     const img = new Image();
-    const imagePath = `${url}`; // 确保路径正确指向 public 目录下的 maps 文件夹
+    const imagePath = `./${url}`;
     // console.log('Loading image from path:', imagePath);
 
     img.src = imagePath;

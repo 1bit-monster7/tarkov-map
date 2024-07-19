@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter,HashRouter } from 'react-router-dom';
 
 import { RecoilRoot } from 'recoil';
 import { Message } from 'tilty-ui';
@@ -12,7 +12,6 @@ import '@/global.less';
 import 'tilty-ui/dist/theme/global.less';
 import 'tilty-ui/dist/theme/index.less';
 import 'tilty-ui/dist/style.css';
-import "./websocket/index.js"
 
 
 declare global {
@@ -36,9 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.createRoot(root).render(
       <React.StrictMode>
         <RecoilRoot>
-          <BrowserRouter>
+          <HashRouter>
             <Router />
-          </BrowserRouter>
+          </HashRouter>
+          {/*<BrowserRouter>*/}
+          {/*  <Router />*/}
+          {/*</BrowserRouter>*/}
           <Message />
         </RecoilRoot>
       </React.StrictMode>,

@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
+import {
+  SearchOutlined,
+  DragOutlined,
+  EditOutlined,
+  ClearOutlined,
+  FlagOutlined,
+  SettingOutlined,
+  WifiOutlined
+} from '@ant-design/icons';
 
 import Icon from '@/components/Icon';
 
@@ -86,7 +95,7 @@ const Index = (
     <div className="im-quicktools">
       <div className="im-quicktools-list">
         <div className="im-quicktools-list-item" onClick={() => setQuickSearchShow(true)} key="search">
-          <Icon type="icon-search-fill" />
+          <SearchOutlined />
         </div>
         <div
           className={classNames('im-quicktools-list-item', {
@@ -95,7 +104,7 @@ const Index = (
           onClick={() => setStrokeType('drag')}
           key="drag"
         >
-          <Icon type="icon-cursor-fill" />
+          <DragOutlined />
         </div>
         {!isMobile && (
           <div
@@ -106,7 +115,7 @@ const Index = (
             onContextMenu={() => setActiveModal('draw')}
             key="draw"
           >
-            <Icon type="icon-pencil-fill" />
+            <EditOutlined />
           </div>
         )}
         {!isMobile && (
@@ -118,7 +127,7 @@ const Index = (
             onContextMenu={() => setActiveModal('eraser')}
             key="eraser"
           >
-            <Icon type="icon-eraser-fill" />
+            <ClearOutlined />
           </div>
         )}
         {/*{(isMobile || resolution.width >= 420) && (*/}
@@ -134,7 +143,7 @@ const Index = (
         {/*)}*/}
         <div className="im-quicktools-list-hr" key="hr" />
         <div className="im-quicktools-list-item" onClick={() => setActiveModal('marker')} key="marker">
-          <Icon type="icon-flag-fill" />
+          <FlagOutlined />
         </div>
         {(isMobile || resolution.width >= 420) && (
           <div
@@ -144,11 +153,11 @@ const Index = (
             onClick={() => onMapInfoActive?.(!mapInfoActive)}
             key="rss"
           >
-            <Icon type="icon-rss-fill" />
+            <WifiOutlined />
           </div>
         )}
         <div className="im-quicktools-list-item" onClick={() => setActiveModal('setting')} key="setting">
-          <Icon type="icon-settings-fill" />
+          <SettingOutlined />
         </div>
       </div>
       <div

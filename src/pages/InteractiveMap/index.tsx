@@ -30,7 +30,7 @@ const Index = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [rulerPosition, setRulerPosition] = useState<InteractiveMap.Position2D[]>();
   const [resolution, setResolution] = useState({ width: 0, height: 0 });
-  const [simpleUIMode, setSimpleUIMode] = useState(false);
+  const [simpleUIMode, setSimpleUIMode] = useState(true); // 默认隐藏菜单 ctrl + g 显示菜单
   const [isMobile, setIsMobile] = useState(false);
 
   const [drawLines, setDrawLines] = useState<InteractiveMap.iMDrawLine[]>([]);

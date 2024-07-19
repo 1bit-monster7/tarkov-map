@@ -184,7 +184,7 @@ export const loots: any = {
 };
 
 export const getIconCDN = (iconName: string) => {
-  return `/mapIcons/${icons[iconName]}.png`;
+  return `./mapIcons/${icons[iconName]}.png`;
 };
 
 export const getIconPath = (name: string) => {

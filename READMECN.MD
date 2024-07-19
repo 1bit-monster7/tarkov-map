@@ -12,32 +12,23 @@ Copyright 2022-2024, TiltySola.
 ```
 $ npm i
 ```
-
-### run server
-
-```
-node server.js
-```
-
-### Development mode
-
-```
-$ npm run dev
-```
-
+ 
 ### Build scripts
 
 ```
 $ npm run build
 ```
 
+### Development mode
+
+```
+$ npm run electron-start
+```
+
+
 ## 基于 https://github.com/tiltysola/tarkov-tilty-frontend-opensource
 
-使用nodejs 监听本地文件变化，通过websocket传递文件名给前端，并在传输文件名后自动删除截图，避免过多的硬盘占用。
-
-前端使用window.interactUpdateLocation 对文件名进行解析并显示在canvas上，通过three 分析角度，实现 user local 朝向功能。
-
-将部分svg保存至本地，减少数据访问。
-
-启动server.js 后 即可开始监听
-
+1、使用electron可实现置顶窗口功能、简化部分操作
+2、ctrl+g呼出菜单
+3、实现朝向功能
+4、部分SVG下载到本地

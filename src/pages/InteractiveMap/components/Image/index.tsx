@@ -11,7 +11,7 @@ type OmitImageConfig = Omit<ImageConfig, 'image'>;
 
 const Index = (props: OmitImageConfig & ImageProps) => {
   const { imageSrc } = props;
-
+  // console.log(imageSrc,'imageSrc')
   const [image, status] = useLocalImages(imageSrc);
 
   if (status === 'loaded') {
