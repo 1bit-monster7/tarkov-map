@@ -22,14 +22,20 @@ function createWindow() {
             contextIsolation: false
         },
         alwaysOnTop: true,
+        closable : true, // 允许关闭
+        autoHideMenuBar:true,
         resizable: true,
-        closable : true // 允许关闭
+        skipTaskbar:true,
+        acceptFirstMouse:true,
+        titleBarStyle:'hidden-inset'
     });
 
     win.loadURL(`file://${__dirname}/dist/index.html`);
 
 
-
+    win.once('ready-to-show', () => {
+        win.show()
+    })
 
     win.on('close',()=>{
         app.quit()
@@ -38,7 +44,6 @@ function createWindow() {
 
     // 示例：最小化窗口
     ipcMain.handle('win_exit', () => {
-        console.log("win_exit")
         if (win) {
             app.quit()
             app.exit()
@@ -50,14 +55,14 @@ function createWindow() {
             if(value){
                 // 获取屏幕信息
                 const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-                // 设置窗口大小为 400x400
-                win.setSize(400, 400);
-                // 将窗口移动到右上角 (x=0, y=0)
-                win.setPosition(width - 400, 0);
-                win.setAutoHideMenuBar(true); // 隐藏菜单栏
+                win.setOpacity(1);
+                win.setAlwaysOnTop(true);
+                win.setMinimumSize(240, 240);
+                win.setSize(420, 600);
+                win.setPosition(width - 420, 0);
             }else{
-                win.setMenuBarVisibility(true); // 显示菜单栏
-                win.setAutoHideMenuBar(false); // 禁用自动隐藏
+                win.setOpacity(1);
+                win.setAlwaysOnTop(false);
             }
             win.setAlwaysOnTop(value); // 设置窗口置顶状态
         }
@@ -68,18 +73,18 @@ app.on('ready', () => {
     wss = new WebSocket.Server({ port: 8889 });
 
     wss.on('connection', (ws) => {
-        console.log('新的浏览器连接');
+        // console.log('新的浏览器连接');
         ws.isAlive = true;
         ws.on('pong', () => {
             ws.isAlive = true;
         });
         ws.on('close', () => {
-            console.log('与浏览器断开连接');
+            // console.log('与浏览器断开连接');
         });
         ws.on('message', (message) => {
             const data = JSON.parse(message);
             if (data.type === 'ping') {
-                console.log('收到浏览器给服务器的心跳包');
+                // console.log('收到浏览器给服务器的心跳包');
                 ws.isAlive = true;
                 ws.send(JSON.stringify({ type: 'pong' }));
             }
