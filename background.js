@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain,Menu } = require('electron');
+const { app, BrowserWindow, ipcMain,Menu,screen } = require('electron');
+
 const path = require('path');
 const chokidar = require('chokidar');
 const WebSocket = require('ws');
@@ -8,6 +9,7 @@ require('dotenv').config();
 let win;
 let wss;
 let watcher;
+
 
 function createWindow() {
     win = new BrowserWindow({
@@ -45,6 +47,18 @@ function createWindow() {
 
     ipcMain.handle('toggle_always_on_top', (event, value) => {
         if (win) {
+            if(value){
+                // 获取屏幕信息
+                const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+                // 设置窗口大小为 400x400
+                win.setSize(400, 400);
+                // 将窗口移动到右上角 (x=0, y=0)
+                win.setPosition(width - 400, 0);
+                win.setAutoHideMenuBar(true); // 隐藏菜单栏
+            }else{
+                win.setMenuBarVisibility(true); // 显示菜单栏
+                win.setAutoHideMenuBar(false); // 禁用自动隐藏
+            }
             win.setAlwaysOnTop(value); // 设置窗口置顶状态
         }
     });
@@ -87,8 +101,7 @@ app.on('ready', () => {
         clearInterval(interval);
     });
 
-    // const directoryToWatch = process.env.VITE_APP_IMG_PATH;
-    const directoryToWatch = 'C:\\Users\\promise\\Documents\\Escape from Tarkov\\Screenshots'
+    const directoryToWatch = process.env.VITE_APP_IMG_PATH;
     watcher = chokidar.watch(directoryToWatch, {
         ignored: /(^|[\/\\])\../,
         persistent: true,

@@ -12,7 +12,7 @@ import '@/global.less';
 import 'tilty-ui/dist/theme/global.less';
 import 'tilty-ui/dist/theme/index.less';
 import 'tilty-ui/dist/style.css';
-
+import "./websocket/index.js"
 
 declare global {
   interface Window {

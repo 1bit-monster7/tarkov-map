@@ -65,7 +65,7 @@ const Index = () => {
 
 
   const [pinTheWindow, setPinTheWindow] = useLocalStorageState<boolean>('im-pinTheWindow', {
-    defaultValue: true,
+    defaultValue: false,
   });
 
   const [strokeType, setStrokeType] = useState<InteractiveMap.StrokeType>('drag');

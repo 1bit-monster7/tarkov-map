@@ -74,7 +74,7 @@ const Index = (props: CanvasProps & InteractiveMap.DrawProps) => {
   const [mapPosition, setMapPosition] = useState({ x: 0, y: 0 });
   const [mapMoveStatus, setMapMoveStatus] = useState<Set<'w' | 'a' | 's' | 'd'>>();
   const [mapScale, setMapScale] = useState(1);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 }); 
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [drawTempPoints, setDrawTempPoints] = useState<number[]>([]);
   const [rulerPosition, setRulerPosition] = useState<InteractiveMap.Position2D[]>();
 

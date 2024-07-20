@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 
-import Icon from '@/components/Icon';
+import Icon from '@/components/Icon/index.js';
 
 import './style.less';
 

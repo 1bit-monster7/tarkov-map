@@ -9,7 +9,7 @@
     "url": "https://github.com/tiltysola/tarkov-tilty-frontend-opensource.git"
   },
   "scripts": {
-    "electron-start": "electron .",
+    "electron-start": "vite build && electron .",
     "start": "concurrently \"node server.js\" \"vite\"",
     "dev": "vite",
     "serve": "vite preview",

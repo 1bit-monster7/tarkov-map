@@ -11,7 +11,7 @@ import {
   WifiOutlined
 } from '@ant-design/icons';
 
-import Icon from '@/components/Icon';
+import Icon from '@/components/Icon/index.js';
 
 import DrawSetting, { DrawSettingProps } from '../DrawSetting';
 import EraserSetting, { EraserSettingProps } from '../EraserSetting';
